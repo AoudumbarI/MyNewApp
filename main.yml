@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+    - name: Install Apache on Debian
+      command: apt-get -y install apache2
+      when: ansible_os_family == "Debian"
+    - name: install apache for RedHat
+      command: yum -y install httpd
+      when: ansible_os_family == "RedHat"
+      notify: start httpd
+  handlers:
+    - name: start httpd
+      action: service name=httpd state=restarted
