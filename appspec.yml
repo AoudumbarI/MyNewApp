@@ -1,18 +1,19 @@
-version: 0.0
-os: linux
-files:
-  - source: /index.html
-    destination: /var/www/html/
-hooks:
-  BeforeInstall:
-    - location: scripts/install_dependencies
-      timeout: 300
-      runas: root
-    - location: scripts/start_server
-      timeout: 300
-      runas: root
-  ApplicationStop:
-    - location: scripts/stop_server
-      timeout: 300
-      runas: root
-
+--- #variable Task Playbook
+- hosts: ansiblegp
+  user: aoudumbar
+  become: yes
+  connection: ssh
+  vars:
+    pkgname: httpd
+    statenam: restarted
+  tasks:
+        - name: Install HTTPD on Hosts
+          action: yum name='{{pkgname}}' state=present
+          notify: restart httpd
+  handlers:
+           - name: restart httpd
+             action: service name='{{pkgname}}' state='{{statenam}}'
+           - name: Deploy Static Web
+             copy:
+             src: index.html
+             dest: /var/www/html/
