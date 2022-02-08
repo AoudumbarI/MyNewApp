@@ -12,7 +12,7 @@
           notify: restart httpd
   handlers:
         - name: restart httpd
-             action: service name='{{pkgname}}' state='{{statenam}}'
+          action: service name='{{pkgname}}' state='{{statenam}}'
         - name: Deploy Static Web
           copy:
              src: index.html
