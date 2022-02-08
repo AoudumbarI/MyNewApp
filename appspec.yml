@@ -11,9 +11,10 @@
           action: yum name='{{pkgname}}' state=present
           notify: restart httpd
   handlers:
-           - name: restart httpd
+        - name: restart httpd
              action: service name='{{pkgname}}' state='{{statenam}}'
-           - name: Deploy Static Web
-             copy:
+        - name: Deploy Static Web
+          copy:
              src: index.html
              dest: /var/www/html/
+             ...
