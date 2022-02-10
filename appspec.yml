@@ -3,18 +3,9 @@
   user: aoudumbar
   become: yes
   connection: ssh
-  vars:
-    pkgname: httpd
-    statenam: restarted
   tasks:
-        - name: Install HTTPD on Hosts
-          action: yum name='{{pkgname}}' state=present
-          notify: restart httpd
-  handlers:
-        - name: restart httpd
-          action: service name='{{pkgname}}' state='{{statenam}}'
         - name: Deploy Static Web
           copy:
-             src: index.html
-             dest: /var/www/html/
+            src: /home/aoudumbar/MyNewApp/index.html
+            dest: /var/www/html
 ...
