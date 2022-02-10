@@ -1,8 +1,6 @@
 --- #variable Task Playbook
 - hosts: ansiblegp
-  user: aoudumbar
   become: yes
-  connection: ssh
   tasks:
         - name: Deploy Static Web
           copy:
