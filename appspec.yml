@@ -1,5 +1,5 @@
 --- #variable Task Playbook
-- hosts: ansiblegp
+- hosts: ansibleGP
   user: aoudumbar
   become: yes
   connection: ssh
