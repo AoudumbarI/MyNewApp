@@ -7,5 +7,5 @@
         - name: Deploy Static Web
           copy:
             src: index.html
-            dest: /var/www/html
+            dest: /etc/var/www/html
 ...
