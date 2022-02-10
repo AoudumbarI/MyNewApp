@@ -1,3 +1,3 @@
 [ansiblegp]
-10.0.10.77  ansible_user=netra
-10.0.10.158   ansible_user=vinaya
+netra@10.0.10.77
+vinaya@10.0.10.158
